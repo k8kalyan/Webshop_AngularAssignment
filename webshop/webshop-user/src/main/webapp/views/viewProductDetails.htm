@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+<body>
+  <div align="center" data-ng-init="getProducts()">
+		<div align="center" data-ng-init="getCategory()">
+			Search by Product <input type="text" data-ng-model="searchP"
+				width="50px"> <br /> Search by Category <select
+				data-ng-model="item"
+				data-ng-options="item.name for item in categories"></select> <br>
+			<br> <a href="#cart"> <i class="icon-shopping-cart"></i><b>Total
+					items: {{cart.getTotalCount()}}, Total Amount:
+					{{cart.getTotalPrice() | currency}}</b>
+			</a>
+			<table width="500">
+				<thead>
+					<tr>
+						<th>Product Name</th>
+						<th>product Price</th>
+						<th></th>
+					</tr>
+				</thead> 
+
+				<tr data-ng-repeat="item in products | filter:searchP  |filter:item.name">
+					<td>{{item.name}}</td>
+					<td>{{item.price}}</td>
+					<td><button
+							data-ng-click="cart.addItem(item.id,item.name,item.price,1)">Add
+							to Cart</button></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</html>

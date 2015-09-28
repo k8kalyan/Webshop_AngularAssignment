@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+       xmlns:repository="http://www.springframework.org/schema/data/repository"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+       http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+       http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.0.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+      http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+
+    <mvc:annotation-driven />
+ 	<mvc:resources mapping="/css/**" location="/css/" />
+	<mvc:resources mapping="/views/**" location="/views/" />
+	<mvc:resources mapping="/js/**" location="/js/" />
+	<mvc:default-servlet-handler />
+    <mvc:resources mapping="/resources/**" location="/resources/" />
+    
+  <context:component-scan base-package="com.webshop.login.model" />
+  <context:component-scan base-package="com.webshop.login.repository" />
+  <context:component-scan base-package="com.webshop.login.service" />
+  <context:component-scan base-package="com.webshop.registration.model" />
+  <context:component-scan base-package="com.webshop.registration.repository" />
+  <context:component-scan base-package="com.webshop.registration.service" />
+  <context:component-scan base-package="com.webshop.registration.constants" />
+  <context:component-scan base-package="com.webshop.controller" />
+   
+  <jpa:repositories base-package="com.webshop.login.repository" />
+       
+    
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix">
+			<value>/WEB-INF/</value>
+		</property>
+		<property name="suffix">
+			<value>.htm</value>
+		</property>
+	</bean>
+  
+  
+  
+  <!--   <bean id="velocityConfig" class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
+        <property name="resourceLoaderPath" value="/WEB-INF/views/"/>
+    </bean>
+
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
+        <property name="cache" value="true"/>
+        <property name="prefix" value=""/>
+        <property name="suffix" value=".html"/>
+        <property name="exposeSpringMacroHelpers" value="true"/>
+    </bean> -->
+
+
+   <bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="dataSource">
+    <property name="driverClassName" value="org.h2.Driver"/>
+    <property name="url" value="jdbc:h2:tcp://localhost/~/petcartdb"/>
+    <property name="username" value="sa" />
+    <property name="password" value="" />
+  </bean>
+  
+  <!-- EntityManagerFactory -->
+  <bean class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" id="entityManagerFactory">
+  <property name = "persistenceXmlLocation"  value = "classpath:/META-INF/spring-persistence.xml" />
+    <property name="persistenceUnitName" value="persistenceUnit"/>
+    <property name="dataSource" ref="dataSource"/>
+  </bean>
+   
+  <!-- Transaction Manager -->
+  <bean class="org.springframework.orm.jpa.JpaTransactionManager" id="transactionManager">
+    <property name="entityManagerFactory" ref="entityManagerFactory"/>
+  </bean>
+      
+<tx:annotation-driven/>
+
+  
+  <bean class=
+"org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"/>
+    <bean class=
+"org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"/>
+
+</beans>

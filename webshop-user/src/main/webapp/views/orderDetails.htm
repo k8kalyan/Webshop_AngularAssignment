@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<style>
+.wrapper {
+	text-align: center;
+}
+
+.button {
+	position: absolute;
+	top: 50%;
+}
+</style>
+</head>
+	<div align="center">
+		<h4>
+	<a>List Of Orders</a>
+ </h4>
+		<form>
+		<hr>
+			<input id="shippingAddress" data-ng-model="OrderShipment.shippingAddress" placeholder="Shipping Address" type="text"> 
+				<input id="shippingCity" data-ng-model="OrderShipment.shippingCity" placeholder="Shipping City"
+				type="text"> <input id="pin" data-ng-model="OrderShipment.pin" placeholder="Pin"
+				type="text"> <input id="status" data-ng-model="OrderShipment.status" placeholder="Status"
+				type="text"> <br /> <br />
+			<!-- <button data-ng-click="userRegistration(UserEntity)">Sign up
+				for Pet Store</button> -->
+				<button data-ng-click="submitted=true && addOrder(OrderShipment,cart.items,cart.userDetails)">Order Now</button>
+		</form>
+</body>
+</html>

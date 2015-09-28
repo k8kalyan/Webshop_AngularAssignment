@@ -1,0 +1,47 @@
+<h3>Category Manage</h3>
+<div align="center" data-ng-init="getCategory()">
+	<h3>Add Category</h3>
+	<table>
+
+		<tr>
+			<td><input type="text" data-ng-model="ProductCategories.name"
+				placeholder="Category Name"> <br /></td>
+		</tr>
+
+		<tr>
+			<td>
+				<button data-ng-show="DisplayUpdate"
+					data-ng-click="updateCategory(ProductCategories)">Update</button>
+				<button data-ng-show="DisplaySave"
+					data-ng-click="addCategory(ProductCategories)">Save</button>
+			</td>
+		</tr>
+	</table>
+	<br>
+	<table width="500">
+		<thead>
+			<tr>
+
+				<th>CategoryName</th>
+				<th>Edit</th>
+				<th>Delete</th>
+			</tr>
+		</thead>
+
+		<tr data-ng-repeat="cat in categories">
+
+			<td>{{cat.name}}</td>
+			<td>{{cat.id}}</td>
+			<td><button data-ng-click="editCategory(cat)">Edit</button></td>
+			<td><button data-ng-click="deleteCategory(cat.id)">Delete</button></td>
+		</tr>
+	</table>
+</div>
+
+<div class="container">
+	<p class="text-info">
+		<button onclick="window.location.href='#home'">
+			<i class="icon-chevron-left"></i> back to Home
+		</button>
+	</p>
+</div>

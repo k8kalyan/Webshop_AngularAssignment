@@ -1,0 +1,58 @@
+<a id="popup" data-ng-init="div_show()"></a>
+
+<div id="abc">
+	<div id="popupLoginForm">
+		<!-- 		<form action="checkLogin" id="form" method="post" name="form"> -->
+		<div align="center" data-ng-init="getProducts()">
+			<form name="form">
+				<img id="close" src="images/close.png" data-ng-click="div_hide()">
+				<h2>Authentication</h2>
+				<hr>
+				<input id="username" name="username"
+					data-ng-model="UserEntity.username" placeholder="Enter username"
+					type="username"> <input id="password"
+					data-ng-model="UserEntity.password" placeholder="Enter Password"
+					type="password"> <span class="help-inline"
+					data-ng-show="submitted && form.password.$error.required">Required</span>
+				<br /> <br />
+				<button
+					data-ng-click="submitted=true && getAuthenticted(UserEntity,cart.items,cart.orderShip)">Login</button>
+				<br /> <a href="#">Forgot username/password?</a><br />
+
+			</form>
+			<button id="popup" data-ng-click="div_showReg()">Sign up</button>
+		</div>
+	</div>
+</div>
+
+<div id="reg">
+	<div id="popupLoginForm">
+		<!-- 		<form action="addUserLogin" id="form" method="post" name="form"> -->
+		<form>
+			<img id="close" src="images/close.png" data-ng-click="div_hideReg()">
+			<h2>Registration Form</h2>
+			<hr>
+			<input id="fname" data-ng-model="UserEntity.fname"
+				placeholder="First Name" type="text"> <input id="lname"
+				data-ng-model="UserEntity.lname" placeholder="Last Name" type="text">
+			<input id="email" data-ng-model="UserEntity.email"
+				placeholder="Enter Email" type="email"> <input id="username"
+				data-ng-model="UserEntity.username" placeholder="User Name"
+				type="text"> <input id="password"
+				data-ng-model="UserEntity.password" placeholder="Create Password"
+				type="password"> <input id="address"
+				data-ng-model="UserEntity.address" placeholder="Address" type="text">
+			<input id="city" data-ng-model="UserEntity.city" placeholder="city"
+				type="text"> <input id="pincode"
+				data-ng-model="UserEntity.pincode" placeholder="pincode" type="text"><br />
+			<br />
+			<!-- <button data-ng-click="userRegistration(UserEntity)">Sign up
+				for Pet Store</button> -->
+			<button data-ng-click="submitted=true && addUser(UserEntity)">Sign
+				up for Webshop</button>
+		</form>
+		<!-- 	<button id="popup" data-ng-click="div_hideReg()">Back to
+			Login Page</button> -->
+		<a href="#adminLoginPage" class="btn btn-link">Cancel</a>
+	</div>
+</div>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
+  version="1.0" xmlns="http://java.sun.com/xml/ns/persistence">
+<persistence-unit name="persistenceUnit" transaction-type="RESOURCE_LOCAL">
+ <provider>org.hibernate.ejb.HibernatePersistence</provider>
+ <class>com.webshop.registration.model.UserEntity</class>
+ <class>com.webshop.login.model.Users</class>
+ <class>com.webshop.login.model.Role</class>
+ <class>com.webshop.registration.model.ProductEntity</class>
+ <class>com.webshop.registration.model.OrderEntity</class>
+ <class>com.webshop.registration.model.ProductCategories</class>
+ <class>com.webshop.registration.model.OrderShipment</class>
+ <class>com.webshop.registration.constants.WebshopConstants</class>
+  
+    <properties>
+      <property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
+      <property name="javax.persistence.jdbc.url" value="jdbc:h2:tcp://localhost/~/petcartdb;DB_CLOSE_DELAY=-1" />
+      <property name="javax.persistence.jdbc.user" value="sa" />
+     <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>   
+      <property name="show_sql" value="true"/>
+      <property name="hibernate.temp.use_jdbc_metadata_defaults" value="false"/>
+    </properties>
+  </persistence-unit>
+</persistence>

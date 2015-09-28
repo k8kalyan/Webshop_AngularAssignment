@@ -1,0 +1,22 @@
+/*!
+ * Extend Bootstrap v2.3.1 to provide cell alignment (doh)
+ *
+ */
+.table td.tdRight {
+  text-align: right;
+}
+.table td.tdCenter {
+  text-align: center;
+}
+.table-nonfluid {
+   width: auto;
+}
+
+#view {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -50px; 
+	margin-left: -100px; 
+}
+
